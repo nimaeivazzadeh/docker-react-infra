@@ -8,3 +8,19 @@ before_install:
 script:
     - docker run nimaadocker/docker-react-infra npm run test -- --coverage  
 
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react-infra"
+    env: "DockerReactInfra-env"
+    bucket_name: "elasticbeanstalk-us-east-2-711940374483"
+    bucket_path: "docker-react-infra"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+
+
+
+    
